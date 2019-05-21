@@ -2,5 +2,10 @@
   "name": "mongooes1804",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/huongnguyen08/mongoose1804.git",
+  "author": "<huongnguyenak96@gmail.com>",
+  "dependencies": {
+    "mongoose": "^5.5.10"
+  }
 }
