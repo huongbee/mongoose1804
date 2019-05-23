@@ -91,16 +91,60 @@ const UserModel = require('./models/user.model');
 // .then(users=>console.log(users))
 // .catch(err=>console.log({error: err.message}))
 
-// SELECT name, _id FROM users
+// SELECT name, email FROM users
 // WHERE name LIKE '%admin%'
 // LIKE 'admin%' /^Admin/
 // LIKE '%admin' /Admin$/
 
-UserModel.find({
-    name: {
-        // $regex: '^admin$',
-        $regex: /Admin/
-    }
-})
+// UserModel.find(
+//     {
+//         name: {
+//             // $regex: '^admin$',
+//             $regex: /Admin/
+//         }
+//     }, 
+//     {
+//         name: 1,
+//         _id: 0
+//     }
+// )
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+// UserModel.find({
+//     name: {
+//         // $regex: '^admin$',
+//         $regex: /Admin/
+//     }
+// },{ _id: 0}).select('name email')
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+// UserModel.find({
+//     name: {
+//         // $regex: '^admin$',
+//         $regex: /Admin/
+//     }
+// }).select({
+//     name: 1,
+//     _id: 0
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+// UserModel.where('users')
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+
+/** 
+ * limit
+ * sort
+ */
+UserModel.find()
+.select({ name: 1, _id:0})
+.sort({ name: 1 }) // asc || ascending
+.limit(1)
+.skip(2)
 .then(users=>console.log(users))
 .catch(err=>console.log({error: err.message}))
