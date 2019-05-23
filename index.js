@@ -11,13 +11,13 @@ const UserModel = require('./models/user.model');
 // insert more
 // UserModel.insertMany([
 //     {
-//         email: 'admin03@gmail.com',
-//         name: 'Admin 03',
+//         email: 'guest@gmail.com',
+//         name: 'Guest',
 //         gender: 'male'
 //     },
 //     {
-//         email: 'guest@gmail.com',
-//         name: 'guest 02',
+//         email: 'manager@gmail.com',
+//         name: 'Manager 01',
 //         gender: 'female'
 //     }
 // ]).then(users=>console.log(users))
@@ -67,16 +67,40 @@ const UserModel = require('./models/user.model');
 // WHERE email = 'admin02@gmail.com'  //2
 // OR email = 'admin03@gmail.com' // 3
 // AND id = '5ce4067ae1417b2aa6c17118' // 3
-UserModel.find(
-    { 
-        $or: [
-           { email: 'admin02@gmail.com' },
-           { email: 'admin03@gmail.com' },
-        ],
-        $and: [
-            { _id: '5ce4067ae1417b2aa6c17118' }
-        ]
+// UserModel.find(
+//     { 
+//         $or: [
+//            { email: 'admin02@gmail.com' },
+//            { email: 'admin03@gmail.com' },
+//         ],
+//         $and: [
+//             { _id: '5ce4067ae1417b2aa6c17118' }
+//         ]
+//     }
+// )
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+// SELECT * FROM users
+// WHERE email = 'admin03@gmail.com' // 3
+// AND _id = '5ce4067ae1417b2aa6c17118' // 3
+// UserModel.find({
+//     email: 'admin03@gmail.com',
+//     _id : '5ce4067ae1417b2aa6c17118'
+// })
+// .then(users=>console.log(users))
+// .catch(err=>console.log({error: err.message}))
+
+// SELECT name, _id FROM users
+// WHERE name LIKE '%admin%'
+// LIKE 'admin%' /^Admin/
+// LIKE '%admin' /Admin$/
+
+UserModel.find({
+    name: {
+        // $regex: '^admin$',
+        $regex: /Admin/
     }
-)
+})
 .then(users=>console.log(users))
 .catch(err=>console.log({error: err.message}))
