@@ -6,6 +6,6 @@
   "repository": "https://github.com/huongnguyen08/mongoose1804.git",
   "author": "<huongnguyenak96@gmail.com>",
   "dependencies": {
-    "mongoose": "^5.5.10"
+    "mongoose": "^5.7.5"
   }
 }
